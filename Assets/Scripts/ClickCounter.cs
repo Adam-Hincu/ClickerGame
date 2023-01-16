@@ -1,8 +1,8 @@
-using TMPro;
 using UnityEngine;
 using UnityEngine.Audio;
 using System;
 using Unity.VisualScripting;
+using TMPro;
 
 public class ClickCounter : MonoBehaviour
 {
@@ -63,5 +63,4 @@ public class ClickCounter : MonoBehaviour
 			Click.pitch = pitch;
 		}
 	}
-
 }

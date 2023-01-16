@@ -1,12 +1,16 @@
 using UnityEngine;
 using System.Collections;
 using TMPro;
-public class CPSCounter : MonoBehaviour
+using Photon.Pun;
+
+public class CPSCounter : MonoBehaviourPun
 {
+	[SerializeField]
 	public float CPS;
 	private int clicks;
 	private float timer;
 
+	[SerializeField]
 	public TMP_Text text;
 
 	void Update()
@@ -24,6 +28,18 @@ public class CPSCounter : MonoBehaviour
 			CPS = Mathf.Round(CPS * 100f) / 100f;
 			clicks = 0;
 			timer = 0;
+		}
+	}
+
+	public void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info)
+	{
+		if (stream.IsWriting)
+		{
+			stream.SendNext(CPS);
+		}
+		else
+		{
+			CPS = (float)stream.ReceiveNext();
 		}
 	}
 }
