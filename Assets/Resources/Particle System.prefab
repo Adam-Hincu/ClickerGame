@@ -5701,7 +5701,6 @@ MonoBehaviour:
   Click: {fileID: 4193661030082499282}
   plus5: {fileID: 4193661030082499281}
   Win: {fileID: 4193661030082499280}
-  score: 0
 --- !u!82 &4193661030082499282
 AudioSource:
   m_ObjectHideFlags: 0
