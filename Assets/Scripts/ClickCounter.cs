@@ -25,6 +25,8 @@ public class ClickCounter : MonoBehaviour
 	[SerializeField] private AudioSource plus5;
 	[SerializeField] private AudioSource Win;
 
+	public bool win;
+
 
 	private void OnMouseDown()
 	{
@@ -36,6 +38,8 @@ public class ClickCounter : MonoBehaviour
 			text.fontSize = 0.52f;
 
 			Win.Play();
+
+			win = true;
 		}
 		else
 		{
@@ -62,5 +66,10 @@ public class ClickCounter : MonoBehaviour
 			Click.Play();
 			Click.pitch = pitch;
 		}
+	}
+
+	private void Start()
+	{
+		win = false;
 	}
 }

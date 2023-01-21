@@ -2,32 +2,59 @@ using UnityEngine;
 using System.Collections;
 using TMPro;
 using Photon.Pun;
+using System;
+using Unity.VisualScripting;
 
 public class CPSCounter : MonoBehaviourPun
 {
-	[SerializeField]
 	public float CPS;
+	public int CPS_int;
 	private int clicks;
 	private float timer;
 
-	[SerializeField]
 	public TMP_Text text;
+
+	public PlayfabManager playfabManager;
+	public ClickCounter clickCounter;
+
+	public int highCPS;
+
+	private int currentClicks;
+	private float currentTimer;
+
+	private void Start()
+	{
+		text = GameObject.Find("Text (TMP) (1)").GetComponent<TMP_Text>();
+		highCPS = 0;
+	}
 
 	void Update()
 	{
+		CPS_int = Mathf.RoundToInt(CPS);
+
+		if (CPS_int >= highCPS)
+		{
+			highCPS = CPS_int;
+		}
+
+		if (clickCounter.win == true)
+		{
+			playfabManager.SendLeadBoard(highCPS);
+		}
+
 		text.text = "CPS : " + CPS.ToString();
 
-		timer += Time.deltaTime;
+		currentTimer += Time.deltaTime;
 		if (Input.GetMouseButtonDown(0))
 		{
-			clicks++;
+			currentClicks++;
 		}
-		if (timer >= 1)
+		if (currentTimer >= 1)
 		{
-			CPS = clicks / timer;
+			CPS = currentClicks / currentTimer;
 			CPS = Mathf.Round(CPS * 100f) / 100f;
-			clicks = 0;
-			timer = 0;
+			currentClicks = 0;
+			currentTimer = 0;
 		}
 	}
 

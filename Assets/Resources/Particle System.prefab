@@ -4869,6 +4869,7 @@ GameObject:
   - component: {fileID: 4193661028392513934}
   - component: {fileID: 1946044164365381709}
   - component: {fileID: 6461684410471972068}
+  - component: {fileID: 8974040401540138029}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -4987,6 +4988,18 @@ MonoBehaviour:
   m_SynchronizeRotation: 1
   m_SynchronizeScale: 1
   m_UseLocal: 1
+--- !u!114 &8974040401540138029
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4193661028392513930}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 674466a8e8eade949bd2ed329ea6b0dd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &4193661028445398858
 GameObject:
   m_ObjectHideFlags: 0
@@ -5561,7 +5574,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   CPS: 0
+  CPS_int: 0
   text: {fileID: 4193661028697700822}
+  playfabManager: {fileID: 8974040401540138029}
+  clickCounter: {fileID: 4193661030082499293}
+  highCPS: 0
 --- !u!1 &4193661030082499291
 GameObject:
   m_ObjectHideFlags: 0
@@ -5701,6 +5718,7 @@ MonoBehaviour:
   Click: {fileID: 4193661030082499282}
   plus5: {fileID: 4193661030082499281}
   Win: {fileID: 4193661030082499280}
+  win: 0
 --- !u!82 &4193661030082499282
 AudioSource:
   m_ObjectHideFlags: 0
