@@ -3,8 +3,9 @@ using UnityEngine.Audio;
 using System;
 using Unity.VisualScripting;
 using TMPro;
+using Photon.Pun;
 
-public class ClickCounter : MonoBehaviour
+public class ClickCounter : MonoBehaviourPun
 {
 	[SerializeField] private TMP_Text text;
 
@@ -28,6 +29,7 @@ public class ClickCounter : MonoBehaviour
 	public bool win;
 
 
+	[PunRPC]
 	private void OnMouseDown()
 	{
 		pitch += 0.01f;
@@ -66,6 +68,13 @@ public class ClickCounter : MonoBehaviour
 			Click.Play();
 			Click.pitch = pitch;
 		}
+		photonView.RPC("updateText", RpcTarget.All);
+	}
+
+	[PunRPC]
+	private void updateText()
+	{
+		text.text = score.ToString();
 	}
 
 	private void Start()
